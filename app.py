@@ -20,7 +20,7 @@ def interpolate(pressure, key):
         p1, p2 = saturation_data[i]["pressure"], saturation_data[i+1]["pressure"]
         if p1 <= pressure <= p2:
             v1, v2 = saturation_data[i][key], saturation_data[i+1][key]
-            return v1 + ((pressure - p1) / (p2 - p1)) * (v2 - v1)
+            return round(v1 + ((pressure - p1) / (p2 - p1)) * (v2 - v1),4)
     return None  # Si la presión está fuera del rango
 
 @app.route('/phase-change-diagram', methods=['GET'])
